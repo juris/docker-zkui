@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+   zk:
+     image: zookeeper:3.4
+     restart: always
+   zkui:
+     image: juris/zkui
+     build:
+       context: .
+     depends_on:
+       - zk
+     ports:
+       - "9090:9090"
+     environment:
+       ZK_SERVER: zk:2181
+     restart: always
