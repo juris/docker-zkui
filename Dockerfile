@@ -12,4 +12,5 @@ COPY --from=0 /usr/src/zkui/config.cfg .
 COPY --from=0 /usr/src/zkui/docker/bootstrap.sh .
 EXPOSE 9090
 ENTRYPOINT ["/var/app/bootstrap.sh"]
-
+HEALTHCHECK --interval=30s --timeout=5s \
+  CMD curl -f http://localhost:9090/ || exit 1
