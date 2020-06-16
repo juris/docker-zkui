@@ -1,10 +1,10 @@
-FROM maven:3.5-alpine
+FROM maven:3.6-alpine
 WORKDIR /usr/src/zkui
 RUN apk add --no-cache git \
     && git clone --depth=1 https://github.com/DeemOpen/zkui.git . \
     && mvn clean install
 
-FROM openjdk:8-jre-alpine
+FROM openjdk:15-alpine
 ENV LOGIN_MESSAGE="Default credentials: admin\/manager"
 WORKDIR /var/app
 COPY --from=0 /usr/src/zkui/target/zkui-2.0-SNAPSHOT-jar-with-dependencies.jar ./zkui.jar
