@@ -4,7 +4,7 @@ RUN apk add --no-cache git \
     && git clone --depth=1 https://github.com/DeemOpen/zkui.git . \
     && mvn clean install
 
-FROM openjdk:16-alpine
+FROM openjdk:22-oracle
 ENV LOGIN_MESSAGE="Default credentials: admin\/manager"
 WORKDIR /var/app
 COPY --from=0 /usr/src/zkui/target/zkui-2.0-SNAPSHOT-jar-with-dependencies.jar ./zkui.jar
