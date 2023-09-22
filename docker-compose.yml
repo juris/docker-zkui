@@ -2,7 +2,7 @@ version: '3'
 
 services:
    zk:
-     image: zookeeper:3.4
+     image: zookeeper:3.8
      restart: always
    zkui:
      image: juris/zkui
